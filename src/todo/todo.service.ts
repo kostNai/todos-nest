@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common'
-import { TodoEntity } from './todo.entity'
-import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
+import { TodoEntity } from './todo.entity'
+import { Injectable } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
 
 @Injectable()
 export class TodoService {

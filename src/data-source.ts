@@ -1,6 +1,6 @@
-import { TypeOrmModuleOptions } from '@nestjs/typeorm'
+import { DataSource } from 'typeorm'
 
-const config: TypeOrmModuleOptions = {
+export const AppDataSource = new DataSource({
   type: 'postgres',
   host: 'localhost',
   port: 5432,
@@ -9,7 +9,5 @@ const config: TypeOrmModuleOptions = {
   database: 'todo',
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
   synchronize: false,
-  migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
-}
-
-export default config
+  migrations: ['./src/migrations/*.ts'],
+})
