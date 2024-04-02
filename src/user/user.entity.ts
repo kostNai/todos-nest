@@ -7,6 +7,8 @@ export class UserEntity {
 
   @Column()
   email: string
+  @Column()
+  username: string
 
   @Column({ default: '' })
   image: string
