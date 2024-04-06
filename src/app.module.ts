@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import config from './ormconfig'
 import { UserModule } from './user/user.module'
 import { AuthMiddleware } from './user/middlewares/auth.middleware'
+import { DataSource } from 'typeorm'
 
 @Module({
   imports: [TodoModule, UserModule, TypeOrmModule.forRoot(config)],
@@ -13,6 +14,7 @@ import { AuthMiddleware } from './user/middlewares/auth.middleware'
   providers: [AppService],
 })
 export class AppModule {
+  constructor(private dataSource: DataSource) {}
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(AuthMiddleware).forRoutes({
       path: '*',

@@ -1,5 +1,12 @@
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm'
 import { hash } from 'bcrypt'
+import { TodoEntity } from 'src/todo/todo.entity'
 @Entity({ name: 'users' })
 export class UserEntity {
   @PrimaryGeneratedColumn()
@@ -20,5 +27,8 @@ export class UserEntity {
   async hashPass() {
     this.password = await hash(this.password, 10)
   }
+
+  @OneToMany(() => TodoEntity, (todo) => todo.author)
+  todos: TodoEntity[]
 }
 123456789

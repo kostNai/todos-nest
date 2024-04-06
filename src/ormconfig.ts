@@ -1,13 +1,15 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm'
+import { TodoEntity } from './todo/todo.entity'
+import { UserEntity } from './user/user.entity'
 
 const config: TypeOrmModuleOptions = {
   type: 'postgres',
   host: 'localhost',
   port: 5432,
   username: 'postgres',
-  password: '123456789',
+  password: '1234',
   database: 'todo',
-  entities: [__dirname + '/**/*.entity{.ts,.js}'],
+  entities: [TodoEntity, UserEntity],
   synchronize: false,
   migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
 }
